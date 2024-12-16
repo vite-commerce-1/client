@@ -8,10 +8,7 @@ import {
 const routes = createRoutesFromElements(
   <Route>
     <Route>
-      <Route
-        path="/"
-        element={<h1 className="text-xs text-red-500 font-bold">Home</h1>}
-      />
+      <Route path="/" element={<h1>Home</h1>} />
     </Route>
   </Route>
 );
