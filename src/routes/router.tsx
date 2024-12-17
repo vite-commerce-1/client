@@ -1,3 +1,4 @@
+import MainLayout from "@/layouts/main-layout";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -7,7 +8,7 @@ import {
 
 const routes = createRoutesFromElements(
   <Route>
-    <Route>
+    <Route element={<MainLayout />}>
       <Route path="/" element={<h1>Home</h1>} />
     </Route>
   </Route>
