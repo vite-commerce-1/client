@@ -8,7 +8,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../atoms/dropdown-menu";
-import { BoxesIcon, SettingsIcon, ShoppingBasketIcon, User2Icon } from "lucide-react";
+import {
+  BoxesIcon,
+  SettingsIcon,
+  ShoppingBasketIcon,
+  User2Icon,
+} from "lucide-react";
+import { ModeToggle } from "../atoms/mode-toggle";
 
 const ProfileDropdown = ({ className }: { className?: string }) => {
   return (
@@ -19,7 +25,7 @@ const ProfileDropdown = ({ className }: { className?: string }) => {
           <AvatarFallback>AV</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="pb-4">
         <DropdownMenuLabel className="font-bold">Profile</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
@@ -38,6 +44,7 @@ const ProfileDropdown = ({ className }: { className?: string }) => {
           <SettingsIcon />
           Settings
         </DropdownMenuItem>
+        <ModeToggle className="ml-2" />
       </DropdownMenuContent>
     </DropdownMenu>
   );
