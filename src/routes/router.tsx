@@ -1,5 +1,6 @@
 import MainLayout from "@/layouts/main-layout";
 import LoginPage from "@/pages/auth/login";
+import DetailProductPage from "@/pages/detail-product";
 import HomePage from "@/pages/home";
 import {
   createBrowserRouter,
@@ -12,6 +13,7 @@ const routes = createRoutesFromElements(
   <Route>
     <Route element={<MainLayout />}>
       <Route path="/" element={<HomePage />} />
+      <Route path="/products/:id" element={<DetailProductPage />} />
     </Route>
     <Route path="/login" element={<LoginPage />} />
   </Route>

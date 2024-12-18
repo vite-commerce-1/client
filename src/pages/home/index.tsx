@@ -59,18 +59,30 @@ const HomePage = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute -left-1 top-1/2 -translate-y-1/2" />
-          <CarouselNext className="absolute -right-1 top-1/2 -translate-y-1/2" />
+          <CarouselPrevious
+            variant={"neutralNoShadow"}
+            className="absolute left-0 top-1/2 -translate-y-1/2"
+          />
+          <CarouselNext
+            variant={"neutralNoShadow"}
+            className="absolute right-0 top-1/2 -translate-y-1/2"
+          />
         </Carousel>
       </Container>
 
       <Container className="space-y-4 py-4">
         <HeaderSection title="Featured products" />
-        <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {products?.map((product) => (
-            <ProductCard key={product._id} product={product} />
-          ))}
-        </main>
+        <Carousel>
+          <CarouselContent>
+            {products?.map((product) => (
+              <CarouselItem className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <ProductCard key={product._id} product={product} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious variant={"neutralNoShadow"} className="left-0" />
+          <CarouselNext variant={"neutralNoShadow"} className="right-0" />
+        </Carousel>
       </Container>
     </div>
   );

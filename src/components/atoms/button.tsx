@@ -13,6 +13,8 @@ const buttonVariants = cva(
         default:
           "bg-main border-2 border-border dark:border-darkBorder shadow-light dark:shadow-dark hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none dark:hover:shadow-none",
         noShadow: "bg-main border-2 border-border dark:border-darkBorder",
+        neutralNoShadow:
+          "bg-white border-2 border-border dark:border-darkBorder",
         neutral:
           "bg-white dark:bg-secondaryBlack dark:text-darkText border-2 border-border dark:border-darkBorder shadow-light dark:shadow-dark hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none dark:hover:shadow-none",
         neutralReverse:

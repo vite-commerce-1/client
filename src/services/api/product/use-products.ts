@@ -3,7 +3,7 @@ import { axiosWithConfig } from "../axios-with-config";
 import { IProductResponse } from "@/services/interfaces/product-interface";
 
 interface IProps {
-  [key: string]: string;
+  [key: string]: string | number;
 }
 
 const fetchProducts = async (params?: IProps) => {

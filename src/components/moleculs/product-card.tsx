@@ -10,17 +10,18 @@ import { Link } from "react-router-dom";
 
 interface IProps {
   product: IProduct;
+  hideFooter?: boolean;
 }
 
-const ProductCard = ({ product }: IProps) => {
+const ProductCard = ({ product, hideFooter = false }: IProps) => {
   return (
-    <Link className="flex h-full w-full" to={"/"}>
+    <Link className="flex h-full w-full" to={`/products/${product?._id}`}>
       <Card className="h-full w-full">
         <CardHeader>
           <Carousel>
             <Badge
               variant={"neutral"}
-              className="absolute top-1 right-1 z-50 capitalize"
+              className="absolute top-1 right-1 z-10 capitalize"
             >
               {product?.category?.name}
             </Badge>
@@ -39,18 +40,20 @@ const ProductCard = ({ product }: IProps) => {
           </h1>
           <h2 className="mb-2 font-medium">{formatCurrency(product?.price)}</h2>
         </CardContent>
-        <CardFooter className="flex flex-wrap gap-4">
-          <ButtonTooltip content="Add to cart">
-            <Button variant={"reverse"}>
-              <ShoppingBagIcon />
-            </Button>
-          </ButtonTooltip>
-          <ButtonTooltip content="View detail">
-            <Button variant={"neutralReverse"}>
-              <EyeIcon />
-            </Button>
-          </ButtonTooltip>
-        </CardFooter>
+        {!hideFooter && (
+          <CardFooter className="flex flex-wrap gap-4">
+            <ButtonTooltip content="Add to cart">
+              <Button variant={"reverse"}>
+                <ShoppingBagIcon />
+              </Button>
+            </ButtonTooltip>
+            <ButtonTooltip content="View detail">
+              <Button variant={"neutralReverse"}>
+                <EyeIcon />
+              </Button>
+            </ButtonTooltip>
+          </CardFooter>
+        )}
       </Card>
     </Link>
   );
