@@ -1,4 +1,5 @@
 import MainLayout from "@/layouts/main-layout";
+import LoginPage from "@/pages/auth/login";
 import HomePage from "@/pages/home";
 import {
   createBrowserRouter,
@@ -12,6 +13,7 @@ const routes = createRoutesFromElements(
     <Route element={<MainLayout />}>
       <Route path="/" element={<HomePage />} />
     </Route>
+    <Route path="/login" element={<LoginPage />} />
   </Route>
 );
 
