@@ -30,3 +30,9 @@
     @apply bg-bg text-text font-poppins;
   }
 }
+
+@layer components {
+  .section-title {
+    @apply text-2xl md:text-4xl font-bebas tracking-wide font-medium; 
+  }
+}

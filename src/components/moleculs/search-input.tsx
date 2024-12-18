@@ -11,9 +11,16 @@ import { Input } from "../atoms/input";
 import { Button } from "../atoms/button";
 import { SearchIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Form, Link } from "react-router-dom";
+import { useProducts } from "@/services/api/product/use-products";
+import { DialogClose } from "../atoms/dialog";
 
 const SearchInput = ({ className }: { className?: string }) => {
   const [open, setOpen] = useState(false);
+
+  const { data: productsData } = useProducts();
+
+  const products = productsData?.products;
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -43,13 +50,19 @@ const SearchInput = ({ className }: { className?: string }) => {
         <SearchIcon />
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <Form method="get" action="/products">
+          <CommandInput name="name" placeholder="Type a command or search..." />
+        </Form>
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>Calendar</CommandItem>
-            <CommandItem>Search Emoji</CommandItem>
-            <CommandItem>Calculator</CommandItem>
+          <CommandGroup heading="Related">
+            {products?.map((product) => (
+              <CommandItem>
+                <Link to={`/products/${product._id}`}>
+                  <DialogClose>{product.name}</DialogClose>
+                </Link>
+              </CommandItem>
+            ))}
           </CommandGroup>
         </CommandList>
       </CommandDialog>
