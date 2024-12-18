@@ -27,7 +27,10 @@ const linkImages = [
 
 const HomePage = () => {
   const { data: categories } = useCategories();
-  const { data: products } = useProducts();
+  const { data } = useProducts();
+
+  const products = data?.products;
+
   return (
     <div className="w-full">
       <section className="w-full">

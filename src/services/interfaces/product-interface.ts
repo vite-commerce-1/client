@@ -23,4 +23,10 @@ export interface IProduct {
 export interface IProductResponse {
   message: string; // Pesan dari response API
   data: IProduct[]; // Array produk dalam data
+  pagination: {
+    totalProduct: number;
+    totalPages: number;
+    currentPage: number;
+    limit: string;
+  };
 }

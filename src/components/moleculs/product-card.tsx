@@ -6,6 +6,7 @@ import { Button } from "../atoms/button";
 import { EyeIcon, ShoppingBagIcon } from "lucide-react";
 import { formatCurrency } from "@/lib/format-currency";
 import ButtonTooltip from "../atoms/button-tooltip";
+import { Link } from "react-router-dom";
 
 interface IProps {
   product: IProduct;
@@ -13,40 +14,45 @@ interface IProps {
 
 const ProductCard = ({ product }: IProps) => {
   return (
-    <Card>
-      <CardHeader>
-        <Carousel>
-          <Badge className="absolute top-1 right-1 z-50">
-            {product?.category?.name}
-          </Badge>
-          <CarouselContent>
-            {product?.image?.map((image, index) => (
-              <CarouselItem key={index}>
-                <img src={image} alt="" className="rounded-md" />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </CardHeader>
-      <CardContent>
-        <h1 className="mb-2 font-medium">
-          <span>{product?.name}</span>
-        </h1>
-        <h2 className="mb-2 font-medium">{formatCurrency(product?.price)}</h2>
-      </CardContent>
-      <CardFooter className="flex flex-wrap gap-4">
-        <ButtonTooltip content="Add to cart">
-          <Button>
-            <ShoppingBagIcon />
-          </Button>
-        </ButtonTooltip>
-        <ButtonTooltip content="View detail">
-          <Button variant={"neutral"}>
-            <EyeIcon />
-          </Button>
-        </ButtonTooltip>
-      </CardFooter>
-    </Card>
+    <Link className="flex h-full w-full" to={"/"}>
+      <Card className="h-full w-full">
+        <CardHeader>
+          <Carousel>
+            <Badge
+              variant={"neutral"}
+              className="absolute top-1 right-1 z-50 capitalize"
+            >
+              {product?.category?.name}
+            </Badge>
+            <CarouselContent>
+              {product?.image?.map((image, index) => (
+                <CarouselItem key={index}>
+                  <img src={image} alt="" className="rounded-md" />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </CardHeader>
+        <CardContent>
+          <h1 className="mb-2 font-medium">
+            <span>{product?.name}</span>
+          </h1>
+          <h2 className="mb-2 font-medium">{formatCurrency(product?.price)}</h2>
+        </CardContent>
+        <CardFooter className="flex flex-wrap gap-4">
+          <ButtonTooltip content="Add to cart">
+            <Button variant={"reverse"}>
+              <ShoppingBagIcon />
+            </Button>
+          </ButtonTooltip>
+          <ButtonTooltip content="View detail">
+            <Button variant={"neutralReverse"}>
+              <EyeIcon />
+            </Button>
+          </ButtonTooltip>
+        </CardFooter>
+      </Card>
+    </Link>
   );
 };
 
