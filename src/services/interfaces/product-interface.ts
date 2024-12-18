@@ -1,4 +1,4 @@
-interface IProductType {
+export interface IProductType {
   key: string; // Key untuk tipe produk, misalnya "color"
   values: string[]; // Array nilai untuk tipe produk, misalnya ["black", "lylac", "gold"]
   _id: string; // ID unik untuk tipe produk
