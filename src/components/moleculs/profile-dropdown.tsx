@@ -25,7 +25,7 @@ const ProfileDropdown = ({ className }: { className?: string }) => {
           <AvatarFallback>AV</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="pb-4">
+      <DropdownMenuContent className="pb-4 z-[51]">
         <DropdownMenuLabel className="font-bold">Profile</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>

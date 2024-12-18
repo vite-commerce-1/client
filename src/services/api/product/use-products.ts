@@ -2,14 +2,23 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosWithConfig } from "../axios-with-config";
 import { IProductResponse } from "@/services/interfaces/product-interface";
 
-const fetchProducts = async () => {
-  const response = await axiosWithConfig.get<IProductResponse>("/product");
-  return response.data.data;
+interface IProps {
+  [key: string]: string;
+}
+
+const fetchProducts = async (params?: IProps) => {
+  const response = await axiosWithConfig.get<IProductResponse>("/product", {
+    params,
+  });
+  return {
+    products: response.data.data,
+    pagination: response.data.pagination,
+  };
 };
 
-export const useProducts = () => {
+export const useProducts = (params?: IProps) => {
   return useQuery({
-    queryFn: () => fetchProducts(),
-    queryKey: ["products"],
+    queryFn: () => fetchProducts(params),
+    queryKey: ["products", params],
   });
 };
