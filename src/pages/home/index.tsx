@@ -11,6 +11,7 @@ import HeaderSection from "@/components/moleculs/header-section";
 import ProductCard from "@/components/moleculs/product-card";
 import { useCategories } from "@/services/api/category/use-categories";
 import { useProducts } from "@/services/api/product/use-products";
+import { Link } from "react-router-dom";
 
 const linkImages = [
   {
@@ -71,7 +72,10 @@ const HomePage = () => {
       </Container>
 
       <Container className="space-y-4 py-4">
-        <HeaderSection title="Featured products" />
+        <header className="flex items-center justify-between">
+          <h1 className="section-title">Our stuff</h1>
+          <Link to={"/products"} className="text-sm font-medium hover:underline">View all products</Link>
+        </header>
         <Carousel>
           <CarouselContent>
             {products?.map((product) => (

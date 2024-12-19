@@ -11,7 +11,7 @@ import { Input } from "../atoms/input";
 import { Button } from "../atoms/button";
 import { SearchIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Form, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useProducts } from "@/services/api/product/use-products";
 import { DialogClose } from "../atoms/dialog";
 
@@ -50,16 +50,21 @@ const SearchInput = ({ className }: { className?: string }) => {
         <SearchIcon />
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <Form method="get" action="/products">
-          <CommandInput name="name" placeholder="Type a command or search..." />
-        </Form>
+        <CommandInput name="name" placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Related">
             {products?.map((product) => (
               <CommandItem>
                 <Link to={`/products/${product._id}`}>
-                  <DialogClose>{product.name}</DialogClose>
+                  <DialogClose className="flex items-center justify-start gap-3">
+                    <img
+                      src={product.image[0]}
+                      alt={product.name}
+                      className="w-10 rounded-md"
+                    />
+                    {product.name}
+                  </DialogClose>
                 </Link>
               </CommandItem>
             ))}
