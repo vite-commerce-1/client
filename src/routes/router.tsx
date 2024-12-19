@@ -1,5 +1,6 @@
 import MainLayout from "@/layouts/main-layout";
 import LoginPage from "@/pages/auth/login";
+import RegisterPage from "@/pages/auth/register";
 import DetailProductPage from "@/pages/detail-product";
 import HomePage from "@/pages/home";
 import ProductsPage from "@/pages/products";
@@ -18,6 +19,7 @@ const routes = createRoutesFromElements(
       <Route path="/products" element={<ProductsPage />} />
     </Route>
     <Route path="/login" element={<LoginPage />} />
+    <Route path="/register" element={<RegisterPage />} />
   </Route>
 );
 

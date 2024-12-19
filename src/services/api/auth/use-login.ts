@@ -20,8 +20,7 @@ export const useLogin = () => {
   return useMutation({
     mutationFn: login,
     mutationKey: ["login"],
-    onSuccess: (data) => {
-      localStorage.setItem("jwt", data.jwt);
+    onSuccess: () => {
       navigate("/");
       toast({
         description: "Login successful",
