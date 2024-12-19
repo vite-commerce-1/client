@@ -74,7 +74,12 @@ const HomePage = () => {
       <Container className="space-y-4 py-4">
         <header className="flex items-center justify-between">
           <h1 className="section-title">Our stuff</h1>
-          <Link to={"/products"} className="text-sm font-medium hover:underline">View all products</Link>
+          <Link
+            to={"/products"}
+            className="text-sm font-medium hover:underline"
+          >
+            View all products
+          </Link>
         </header>
         <Carousel>
           <CarouselContent>
