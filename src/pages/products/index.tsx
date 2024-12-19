@@ -18,8 +18,10 @@ import ProductNotFound from "@/components/moleculs/product-not-found";
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedCategory = searchParams.get("category") || "";
+  const name = searchParams.get("name") || "";
   const { data: categories } = useCategories();
   const { data: productsData, isLoading: productsLoading } = useProducts({
+    name: name,
     category: selectedCategory,
   });
 
