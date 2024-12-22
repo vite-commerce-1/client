@@ -15,20 +15,33 @@ import ProductCard from "@/components/moleculs/product-card";
 import { Skeleton } from "@/components/atoms/skeleton";
 import ProductNotFound from "@/components/moleculs/product-not-found";
 
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationLink,
+  PaginationNext,
+  PaginationEllipsis,
+} from "@/components/atoms/pagination";
+
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedCategory = searchParams.get("category") || "";
   const name = searchParams.get("name") || "";
+  const currentPage = parseInt(searchParams.get("page") || "1", 10); // Default to page 1
   const { data: categories } = useCategories();
   const { data: productsData, isLoading: productsLoading } = useProducts({
     name: name,
     category: selectedCategory,
+    page: currentPage, // Pass current page to the API request
   });
 
   const products = productsData?.products;
+  const totalPages = productsData?.pagination.totalPages || 1; // Get the total pages from pagination data
 
   const handleCategoryChange = (category: string) => {
-    if (category == "others") {
+    if (category === "others") {
       category = "";
     }
     if (category) {
@@ -36,6 +49,14 @@ const ProductsPage = () => {
     } else {
       setSearchParams({});
     }
+  };
+
+  const handlePageChange = (page: number) => {
+    setSearchParams({
+      page: page.toString(),
+      category: selectedCategory,
+      name: name,
+    });
   };
 
   return (
@@ -75,10 +96,58 @@ const ProductsPage = () => {
             <ProductNotFound className="col-span-4" />
           ) : (
             products?.map((product: IProduct) => (
-              <ProductCard product={product} />
+              <ProductCard key={product._id} product={product} />
             ))
           )}
         </main>
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <Pagination>
+            <PaginationContent>
+              {/* Previous Page Button */}
+              <PaginationItem>
+                <PaginationPrevious
+                  onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                  isActive={currentPage !== 1}
+                />
+              </PaginationItem>
+
+              {/* Page Number Links */}
+              {Array.from({ length: totalPages }).map((_, index) => {
+                const pageNumber = index + 1;
+                return (
+                  <PaginationItem key={pageNumber}>
+                    <PaginationLink
+                      href="#"
+                      onClick={() => handlePageChange(pageNumber)}
+                      isActive={pageNumber === currentPage} 
+                    >
+                      {pageNumber}
+                    </PaginationLink>
+                  </PaginationItem>
+                );
+              })}
+
+              {/* Ellipsis for overflow */}
+              {totalPages > 5 && (
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+              )}
+
+              {/* Next Page Button */}
+              <PaginationItem>
+                <PaginationNext
+                  onClick={() =>
+                    handlePageChange(Math.min(totalPages, currentPage + 1))
+                  }
+                  isActive={currentPage !== totalPages} 
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        )}
       </Container>
     </div>
   );

@@ -20,7 +20,6 @@ const ProductCard = ({ product, hideFooter = false }: IProps) => {
         <CardHeader>
           <Carousel>
             <Badge
-              variant={"neutral"}
               className="absolute top-1 right-1 z-10 capitalize"
             >
               {product?.category?.name}
@@ -44,14 +43,14 @@ const ProductCard = ({ product, hideFooter = false }: IProps) => {
       {!hideFooter && (
         <CardFooter className="flex flex-wrap gap-4">
           <ButtonTooltip content="Add to cart">
-            <Button variant={"reverse"}>
+            <Button >
               <ShoppingBagIcon />
             </Button>
           </ButtonTooltip>
           <ButtonTooltip content="View detail">
             <Link
               to={`/products/${product?._id}`}
-              className={buttonVariants({ variant: "neutralReverse" })}
+              className={buttonVariants({  })}
             >
               <EyeIcon />
             </Link>

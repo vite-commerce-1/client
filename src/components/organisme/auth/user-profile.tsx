@@ -54,7 +54,7 @@ function ProfileItem({
       <span className="font-semibold">{label}:</span>
       <span className="text-gray-600">
         {value}
-        {badge && <Badge className="ml-2 bg-green-500">Verified</Badge>}
+        {badge && <Badge className="ml-2">Verified</Badge>}
       </span>
     </div>
   );

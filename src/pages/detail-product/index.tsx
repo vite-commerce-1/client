@@ -41,10 +41,7 @@ const DetailProductPage = () => {
             <CarouselContent className="w-full">
               {product?.image?.map((image: string, index: number) => (
                 <CarouselItem className="w-full" key={index}>
-                  <Badge
-                    variant={"neutral"}
-                    className="absolute top-1 right-1 z-10 capitalize"
-                  >
+                  <Badge className="absolute top-1 right-1 z-10 capitalize">
                     {product?.category?.name}
                   </Badge>
                   <img
@@ -116,14 +113,8 @@ const DetailProductPage = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious
-                variant={"neutralNoShadow"}
-                className="hidden sm:flex left-0"
-              />
-              <CarouselNext
-                variant={"neutralNoShadow"}
-                className="hidden sm:flex right-0"
-              />
+              <CarouselPrevious className="hidden sm:flex left-0" />
+              <CarouselNext className="hidden sm:flex right-0" />
             </Carousel>
           </section>
         </main>

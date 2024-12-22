@@ -110,7 +110,6 @@ const RegisterPage = () => {
                   )}
                 />
                 <Button
-                  variant={"neutralReverse"}
                   type="submit"
                   className="w-full"
                   disabled={isLoading}

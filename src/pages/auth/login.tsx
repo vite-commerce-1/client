@@ -78,12 +78,7 @@ const LoginPage = () => {
                     </FormItem>
                   )}
                 />
-                <Button
-                  variant={"neutralReverse"}
-                  type="submit"
-                  className="w-full"
-                  disabled={isLoading}
-                >
+                <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? "Loading..." : "Login"}
                 </Button>
               </form>

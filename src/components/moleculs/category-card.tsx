@@ -9,7 +9,7 @@ interface IProps {
 const CategoryCard = ({ category }: IProps) => {
   return (
     <Link to={"#"}>
-      <Card className="p-3 w-full h-full flex flex-col items-center justify-center gap-3  transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none dark:hover:shadow-none">
+      <Card className="p-3 w-full h-full flex flex-col items-center justify-center gap-3 dark:bg-primary">
         <img src={category.image} alt="category_images" className="w-6 select-none" />
         <p className="capitalize text-sm text-nowrap font-medium select-none">
           {category.name}
