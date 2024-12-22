@@ -4,6 +4,7 @@ import RegisterPage from "@/pages/auth/register";
 import DetailProductPage from "@/pages/detail-product";
 import HomePage from "@/pages/home";
 import ProductsPage from "@/pages/products";
+import VerificationAccountPage from "@/pages/verification-accont";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -20,6 +21,7 @@ const routes = createRoutesFromElements(
     </Route>
     <Route path="/login" element={<LoginPage />} />
     <Route path="/register" element={<RegisterPage />} />
+    <Route path="/verification-account" element={<VerificationAccountPage />} />
   </Route>
 );
 

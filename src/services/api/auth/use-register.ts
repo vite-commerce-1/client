@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
+import Cookies from "js-cookie";
 
 export const registerSchema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters long"),
@@ -23,10 +24,11 @@ export const useRegister = () => {
     mutationFn: register,
     mutationKey: ["register"],
     onSuccess: () => {
-      navigate("/login");
+      Cookies.set("isLogin", "true");
       toast({
         description: "Registration successful",
       });
+      setTimeout(() => navigate("/verification-account"), 2000);
     },
     onError: (error) => {
       if (error instanceof AxiosError && error.response) {
