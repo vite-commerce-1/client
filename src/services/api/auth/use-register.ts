@@ -24,7 +24,7 @@ export const useRegister = () => {
     mutationFn: register,
     mutationKey: ["register"],
     onSuccess: () => {
-      Cookies.set("isLogin", "true");
+      Cookies.set("isLogin", "true", { expires: 1 / 24 });
       toast({
         description: "Registration successful",
       });

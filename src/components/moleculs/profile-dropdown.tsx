@@ -37,7 +37,7 @@ const ProfileDropdown = ({ className }: { className?: string }) => {
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <Link to={"/profile"} className="flex w-full h-full gap-2">
-                <User2Icon />
+                <User2Icon size={16} />
                 User
               </Link>
             </DropdownMenuItem>
