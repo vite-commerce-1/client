@@ -36,8 +36,8 @@ const ProductNotFound = ({ className }: { className?: string }) => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious variant={"neutralNoShadow"} className="left-0" />
-            <CarouselNext variant={"neutralNoShadow"} className="right-0" />
+            <CarouselPrevious className="left-0" />
+            <CarouselNext className="right-0" />
           </Carousel>
         </Container>
       </Container>

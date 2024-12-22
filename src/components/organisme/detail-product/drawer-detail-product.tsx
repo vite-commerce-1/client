@@ -48,7 +48,7 @@ const DrawerDetailProduct = ({ children, product }: IProps) => {
                 <h1 className="capitalize font-semibold">{type.key}</h1>
                 <div className="flex flex-wrap justify-start gap-1">
                   {type.values?.map((value) => (
-                    <Badge variant={"neutral"} className="capitalize">{value}</Badge>
+                    <Badge className="capitalize">{value}</Badge>
                   ))}
                 </div>
               </div>

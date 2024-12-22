@@ -1,3 +1,6 @@
+"use client";
+
+import * as React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { Slot } from "@radix-ui/react-slot";
 import {
@@ -9,11 +12,8 @@ import {
   useFormContext,
 } from "react-hook-form";
 
-import * as React from "react";
-
-import { Label } from "@/components/atoms/label";
-
 import { cn } from "@/lib/utils";
+import { Label } from "@/components/atoms/label";
 
 const Form = FormProvider;
 
@@ -95,7 +95,7 @@ const FormLabel = React.forwardRef<
   return (
     <Label
       ref={ref}
-      className={cn(error && "text-red-500 font-base", className)}
+      className={cn(error && "text-destructive", className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -136,10 +136,7 @@ const FormDescription = React.forwardRef<
     <p
       ref={ref}
       id={formDescriptionId}
-      className={cn(
-        "text-sm font-base text-text dark:text-darkText",
-        className
-      )}
+      className={cn("text-[0.8rem] text-muted-foreground", className)}
       {...props}
     />
   );
@@ -161,7 +158,7 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={cn("text-sm font-base text-red-500", className)}
+      className={cn("text-[0.8rem] font-medium text-destructive", className)}
       {...props}
     >
       {body}

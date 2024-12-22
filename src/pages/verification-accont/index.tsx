@@ -81,7 +81,7 @@ const VerificationAccountPage = () => {
             <p className="text-center">
               If you don&apos;t receive an email, please regenerate OTP code
             </p>
-            <Button variant={"neutral"}>Regenerate OTP</Button>
+            <Button>Regenerate OTP</Button>
           </CardFooter>
         </Card>
       </Container>

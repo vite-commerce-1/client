@@ -61,11 +61,9 @@ const HomePage = () => {
             ))}
           </CarouselContent>
           <CarouselPrevious
-            variant={"neutralNoShadow"}
             className="absolute left-0 top-1/2 -translate-y-1/2"
           />
           <CarouselNext
-            variant={"neutralNoShadow"}
             className="absolute right-0 top-1/2 -translate-y-1/2"
           />
         </Carousel>
@@ -89,8 +87,8 @@ const HomePage = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious variant={"neutralNoShadow"} className="left-0" />
-          <CarouselNext variant={"neutralNoShadow"} className="right-0" />
+          <CarouselPrevious className="left-0" />
+          <CarouselNext className="right-0" />
         </Carousel>
       </Container>
     </div>

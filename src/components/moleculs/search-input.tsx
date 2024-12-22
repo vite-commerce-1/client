@@ -43,7 +43,6 @@ const SearchInput = ({ className }: { className?: string }) => {
       />
       <Button
         onClick={() => setOpen(true)}
-        variant={"reverse"}
         size={"icon"}
         className="md:hidden"
       >
