@@ -11,7 +11,7 @@ import { Input } from "@/components/atoms/input";
 import {
   createAddressSchema,
   useAddAddress,
-} from "@/services/api/auth/use-add-address";
+} from "@/services/api/address/use-add-address";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -52,7 +52,8 @@ const AddAddressForm = () => {
     },
   });
 
-  const { mutate: addAddress } = useAddAddress();
+  const { mutate: addAddress, status } = useAddAddress();
+  const isLoading = status === "pending";
 
   const onSubmit = async (data: z.infer<typeof createAddressSchema>) => {
     const parsedData = {
@@ -62,13 +63,7 @@ const AddAddressForm = () => {
         Number(data.coordinates[1]),
       ] as [number, number],
     };
-
-    try {
-      addAddress(parsedData);
-    } catch (error) {
-      console.error("Error while adding address:", error);
-      console.error("Parsed Data:", parsedData);
-    }
+    addAddress(parsedData);
   };
 
   const setCoordinates = (coords: [number, number]) => {
@@ -226,8 +221,8 @@ const AddAddressForm = () => {
               )}
             />
             <div className="mt-4 space-x-4 flex items-center justify-start">
-              <Button variant={"secondary"} type="submit">
-                Create
+              <Button variant={"secondary"} type="submit" disabled={isLoading}>
+                {isLoading ? "Loading..." : "Save"}
               </Button>
               <Button
                 variant={"destructive"}

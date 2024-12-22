@@ -2,6 +2,9 @@ import { z } from "zod";
 import { axiosWithConfig } from "../axios-with-config";
 import { useMutation } from "@tanstack/react-query";
 import { IAddressResponse } from "@/services/interfaces/address-interface";
+import { useNavigate } from "react-router-dom";
+import { toast } from "@/hooks/use-toast";
+import { AxiosError } from "axios";
 
 export const createAddressSchema = z.object({
   detail: z.string().nonempty("Detail address is required"), // Detail alamat harus diisi
@@ -32,10 +35,30 @@ const addAddress = async (data: z.infer<typeof createAddressSchema>) => {
 };
 
 export const useAddAddress = () => {
+  const navigate = useNavigate();
   return useMutation({
     mutationFn: addAddress,
     mutationKey: ["add-address"],
-    onSuccess: () => {},
-    onError: () => {},
+    onSuccess: () => {
+      toast({
+        description: "Add address success",
+      });
+      setTimeout(() => {
+        navigate(-1);
+      }, 2000);
+    },
+    onError: (error) => {
+      if (error instanceof AxiosError && error.response) {
+        toast({
+          description: error.response.data.message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          description: "Something went wrong",
+          variant: "destructive",
+        });
+      }
+    },
   });
 };

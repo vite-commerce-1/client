@@ -1,22 +1,10 @@
-import { Badge } from "@/components/atoms/badge";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/atoms/carousel";
 import Container from "@/components/atoms/container";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-} from "@/components/atoms/select";
 import { Separator } from "@/components/atoms/separator";
-import ProductCard from "@/components/moleculs/product-card";
 import BreadcrumbDetailProduct from "@/components/organisme/detail-product/breadcrumb-detail-product";
 import DrawerDetailProduct from "@/components/organisme/detail-product/drawer-detail-product";
+import ImageSliderProduct from "@/components/organisme/detail-product/image-slider-product";
+import RelatedProductSlider from "@/components/organisme/detail-product/related-product-slider";
+import SelectVariantProduct from "@/components/organisme/detail-product/select-variant-product";
 import { formatCurrency } from "@/lib/format-currency";
 import { useProduct } from "@/services/api/product/use-product";
 import { useProducts } from "@/services/api/product/use-products";
@@ -36,24 +24,9 @@ const DetailProductPage = () => {
         {/* Breadcrumb */}
         <BreadcrumbDetailProduct name={product?.name} />
         <main className="grid grid-cols-1 md:grid-cols-[auto_1fr] md:grid-rows-[auto_auto_auto_1fr]">
+          
           {/* Image Slider */}
-          <Carousel className="max-w-md w-full md:col-start-1 md:row-span-4">
-            <CarouselContent className="w-full">
-              {product?.image?.map((image: string, index: number) => (
-                <CarouselItem className="w-full" key={index}>
-                  <Badge className="absolute top-1 right-1 z-10 capitalize">
-                    {product?.category?.name}
-                  </Badge>
-                  <img
-                    src={image}
-                    alt=""
-                    key={index}
-                    className="w-full rounded-md"
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+          <ImageSliderProduct product={product!} />
 
           {/* Product Price */}
           <h1 className="mt-4 md:mt-0 text-2xl md:text-3xl font-bebas tracking-wide">
@@ -80,43 +53,12 @@ const DetailProductPage = () => {
           {/* Select Variants */}
           <div className="grid grid-cols-2">
             {product?.type.map((type: IProductType) => (
-              <Select key={type._id}>
-                <SelectTrigger className="capitalize">{type.key}</SelectTrigger>
-                <SelectContent>
-                  {type?.values.map((value: string | number) => (
-                    <SelectItem
-                      className="capitalize"
-                      value={value as string}
-                      key={value}
-                    >
-                      {value}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SelectVariantProduct type={type} />
             ))}
           </div>
 
           {/* Todo Related Product */}
-          <section className="py-8 space-y-4 md:col-span-2">
-            <header className="text-2xl md:text-3xl font-semibold font-bebas tracking-wider">
-              Related Products
-            </header>
-            <Carousel>
-              <CarouselContent>
-                {products?.map((product) => (
-                  <CarouselItem
-                    key={product._id}
-                    className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
-                  >
-                    <ProductCard product={product} hideFooter />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden sm:flex left-0" />
-              <CarouselNext className="hidden sm:flex right-0" />
-            </Carousel>
-          </section>
+          {products && <RelatedProductSlider products={products} />}
         </main>
       </Container>
     </div>
