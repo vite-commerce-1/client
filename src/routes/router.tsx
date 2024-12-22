@@ -4,6 +4,7 @@ import RegisterPage from "@/pages/auth/register";
 import DetailProductPage from "@/pages/detail-product";
 import HomePage from "@/pages/home";
 import ProductsPage from "@/pages/products";
+import ProfilePage from "@/pages/profile";
 import VerificationAccountPage from "@/pages/verification-accont";
 import {
   createBrowserRouter,
@@ -18,6 +19,7 @@ const routes = createRoutesFromElements(
       <Route path="/" element={<HomePage />} />
       <Route path="/products/:id" element={<DetailProductPage />} />
       <Route path="/products" element={<ProductsPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
     </Route>
     <Route path="/login" element={<LoginPage />} />
     <Route path="/register" element={<RegisterPage />} />
