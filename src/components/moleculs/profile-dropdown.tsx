@@ -16,15 +16,17 @@ import {
   User2Icon,
 } from "lucide-react";
 import { ModeToggle } from "../atoms/mode-toggle";
-import Cookies from "js-cookie";
 import { buttonVariants } from "../atoms/button";
 import { Link } from "react-router-dom";
+import { useLogout } from "@/services/api/auth/use-logout";
 
 const ProfileDropdown = ({ className }: { className?: string }) => {
-  const isLogin = Cookies.get("isLogin") === "true";
+  const { mutate: logout } = useLogout();
+  const user = localStorage.getItem("user");
+
   return (
     <>
-      {isLogin ? (
+      {user !== null ? (
         <DropdownMenu>
           <DropdownMenuTrigger className={cn(className, "")}>
             <Avatar>
@@ -53,7 +55,10 @@ const ProfileDropdown = ({ className }: { className?: string }) => {
               <SettingsIcon />
               Settings
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => logout()}
+              className="cursor-pointer"
+            >
               <LogOutIcon />
               Logout
             </DropdownMenuItem>

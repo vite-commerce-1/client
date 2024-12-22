@@ -4,8 +4,9 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import { ILoginResponse } from "@/services/interfaces/auth-interface";
+import { useDispatch } from "react-redux";
+import { login as loginAction } from "@/store/slices/auth-slicer";
 
 export const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -22,15 +23,15 @@ const login = async (data: z.infer<typeof loginSchema>) => {
 
 export const useLogin = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return useMutation({
     mutationFn: login,
     mutationKey: ["login"],
-
-    onSuccess: () => {
-      Cookies.set("isLogin", "true");
+    onSuccess: (data) => {
       toast({
         description: "Login successful",
       });
+      dispatch(loginAction(data));
       setTimeout(() => navigate("/"), 2000);
     },
     onError: (error) => {
