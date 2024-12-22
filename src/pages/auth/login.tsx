@@ -25,7 +25,8 @@ const LoginPage = () => {
     },
   });
 
-  const { mutate: login } = useLogin();
+  const { mutate: login, status } = useLogin();
+  const isLoading = status === "pending";
 
   const onSubmit = async (data: z.infer<typeof loginSchema>) => {
     login(data);
@@ -81,8 +82,9 @@ const LoginPage = () => {
                   variant={"neutralReverse"}
                   type="submit"
                   className="w-full"
+                  disabled={isLoading}
                 >
-                  Login
+                  {isLoading ? "Loading..." : "Login"}
                 </Button>
               </form>
             </Form>

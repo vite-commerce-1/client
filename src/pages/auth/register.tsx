@@ -21,7 +21,8 @@ const RegisterPage = () => {
     resolver: zodResolver(registerSchema),
   });
 
-  const { mutate: register } = useRegister();
+  const { mutate: register, status } = useRegister();
+  const isLoading = status === "pending";
 
   const onSubmit = async (data: z.infer<typeof registerSchema>) => {
     register(data);
@@ -112,8 +113,9 @@ const RegisterPage = () => {
                   variant={"neutralReverse"}
                   type="submit"
                   className="w-full"
+                  disabled={isLoading}
                 >
-                  Register
+                  {isLoading ? "Loading..." : "Register"}
                 </Button>
               </form>
             </Form>

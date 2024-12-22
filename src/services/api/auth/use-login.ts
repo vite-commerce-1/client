@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -20,11 +21,13 @@ export const useLogin = () => {
   return useMutation({
     mutationFn: login,
     mutationKey: ["login"],
+
     onSuccess: () => {
-      navigate("/");
+      Cookies.set("isLogin", "true");
       toast({
         description: "Login successful",
       });
+      setTimeout(() => navigate("/"), 2000);
     },
     onError: (error) => {
       if (error instanceof AxiosError && error.response) {
