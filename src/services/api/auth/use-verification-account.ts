@@ -1,3 +1,4 @@
+import { IVerificationAccountResponse } from "./../../interfaces/auth-interface";
 import { z } from "zod";
 import { axiosWithConfig } from "../axios-with-config";
 import { toast } from "@/hooks/use-toast";
@@ -12,11 +13,11 @@ export const verificationSchema = z.object({
 const fetchVerificationAccount = async (
   data: z.infer<typeof verificationSchema>
 ) => {
-  const response = await axiosWithConfig.post(
+  const response = await axiosWithConfig.post<IVerificationAccountResponse>(
     "/auth/verification-account",
     data
   );
-  return response.data.data;
+  return response.data.message;
 };
 
 export const useVerificationAccount = () => {

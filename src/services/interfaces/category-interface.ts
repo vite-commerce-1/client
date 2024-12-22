@@ -6,5 +6,5 @@ export interface ICategory {
 
 export interface ICategoryResponse {
   message: string;
-  data: ICategory[];
+  data: ICategory[] | ICategory;
 }

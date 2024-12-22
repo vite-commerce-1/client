@@ -82,7 +82,7 @@ const HomePage = () => {
         <Carousel>
           <CarouselContent>
             {products?.map((product) => (
-              <CarouselItem className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <CarouselItem key={product._id} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                 <ProductCard key={product._id} product={product} />
               </CarouselItem>
             ))}
