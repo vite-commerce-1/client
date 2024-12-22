@@ -7,16 +7,20 @@ import Router from "./routes/router.tsx";
 
 import "./index.css";
 import { Toaster } from "./components/atoms/toaster.tsx";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <Toaster />
-        <Router />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Toaster />
+          <Router />
+        </ThemeProvider>
+      </Provider>
     </QueryClientProvider>
   </StrictMode>
 );
