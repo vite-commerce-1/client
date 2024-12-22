@@ -36,8 +36,10 @@ const ProfileDropdown = ({ className }: { className?: string }) => {
             <DropdownMenuLabel className="font-bold">Profile</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <User2Icon />
-              User
+              <Link to={"/profile"} className="flex w-full h-full gap-2">
+                <User2Icon />
+                User
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <ShoppingBasketIcon />
