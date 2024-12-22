@@ -22,7 +22,7 @@ export interface IProduct {
 
 export interface IProductResponse {
   message: string;
-  data: IProduct[] | IProduct;
+  data: IProduct[];
   pagination: {
     totalProduct: number;
     totalPages: number;

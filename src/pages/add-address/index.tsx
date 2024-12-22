@@ -3,7 +3,7 @@ import AddAddressForm from "@/components/organisme/auth/add-address-form";
 const AddAddressPage = () => {
   return (
     <div>
-      <Container>
+      <Container className="pt-20">
         <AddAddressForm />
       </Container>
     </div>
