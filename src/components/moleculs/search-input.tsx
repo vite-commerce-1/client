@@ -54,7 +54,7 @@ const SearchInput = ({ className }: { className?: string }) => {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Related">
             {products?.map((product) => (
-              <CommandItem>
+              <CommandItem key={product._id}>
                 <Link to={`/products/${product._id}`}>
                   <DialogClose className="flex items-center justify-start gap-3">
                     <img

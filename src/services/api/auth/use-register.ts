@@ -5,6 +5,7 @@ import { toast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
 import Cookies from "js-cookie";
+import { IRegisterResponse } from "@/services/interfaces/auth-interface";
 
 export const registerSchema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters long"),
@@ -14,7 +15,10 @@ export const registerSchema = z.object({
 });
 
 const register = async (data: z.infer<typeof registerSchema>) => {
-  const response = await axiosWithConfig.post("/auth/register", data);
+  const response = await axiosWithConfig.post<IRegisterResponse>(
+    "/auth/register",
+    data
+  );
   return response.data.data;
 };
 

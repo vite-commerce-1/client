@@ -1,28 +1,28 @@
 export interface IProductType {
-  key: string; // Key untuk tipe produk, misalnya "color"
-  values: string[]; // Array nilai untuk tipe produk, misalnya ["black", "lylac", "gold"]
-  _id: string; // ID unik untuk tipe produk
+  key: string;
+  values: string[];
+  _id: string;
 }
 
 interface ICategory {
-  _id: string; // ID unik kategori
-  name: string; // Nama kategori, misalnya "electronics"
+  _id: string;
+  name: string;
 }
 
 export interface IProduct {
-  _id: string; // ID unik produk
-  name: string; // Nama produk, misalnya "Iphone 14 Pro Max 256gb"
-  price: number; // Harga produk, misalnya 24999000
-  image: string[]; // Array URL gambar produk
-  description: string; // Deskripsi produk
-  type: IProductType[]; // Array tipe produk, misalnya warna
-  category: ICategory; // Informasi kategori produk
-  __v: number; // Versi dokumen untuk Mongoose (biasanya digunakan untuk internal)
+  _id: string;
+  name: string;
+  price: number;
+  image: string[];
+  description: string;
+  type: IProductType[];
+  category: ICategory;
+  __v: number;
 }
 
 export interface IProductResponse {
-  message: string; // Pesan dari response API
-  data: IProduct[]; // Array produk dalam data
+  message: string;
+  data: IProduct[] | IProduct;
   pagination: {
     totalProduct: number;
     totalPages: number;

@@ -5,6 +5,7 @@ import { toast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { ILoginResponse } from "@/services/interfaces/auth-interface";
 
 export const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -12,7 +13,10 @@ export const loginSchema = z.object({
 });
 
 const login = async (data: z.infer<typeof loginSchema>) => {
-  const response = await axiosWithConfig.post("/auth/login", data);
+  const response = await axiosWithConfig.post<ILoginResponse>(
+    "/auth/login",
+    data
+  );
   return response.data.data;
 };
 
