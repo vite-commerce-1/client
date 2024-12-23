@@ -1,5 +1,10 @@
-import Container from "@/components/atoms/container";
-import AddAddressForm from "@/components/organisme/auth/add-address-form";
+import React from "react";
+
+const Container = React.lazy(() => import("@/components/atoms/container"));
+const AddAddressForm = React.lazy(
+  () => import("@/components/organisme/auth/add-address-form")
+);
+
 const AddAddressPage = () => {
   return (
     <div>

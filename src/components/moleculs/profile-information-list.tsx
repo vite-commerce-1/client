@@ -18,7 +18,7 @@ interface IProps {
 const ProfileInformationList = ({ user }: IProps) => {
   return (
     <>
-      <figure className="max-w-[200px] rounded-full overflow-hidden">
+      <figure className="max-w-[200px] rounded-full overflow-hidden aspect-square">
         <img src={user?.image} alt="" />
       </figure>
       <div className="space-y-3 mt-4">

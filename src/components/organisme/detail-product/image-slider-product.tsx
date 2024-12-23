@@ -4,6 +4,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/atoms/carousel";
+import { Skeleton } from "@/components/atoms/skeleton";
 import { IProduct } from "@/services/interfaces/product-interface";
 
 interface IProps {
@@ -11,6 +12,10 @@ interface IProps {
 }
 
 const ImageSliderProduct = ({ product }: IProps) => {
+  if (!product) {
+    <Skeleton className="max-w-md w-full md:col-start-1 md:row-span-4" />;
+  }
+
   return (
     <Carousel className="max-w-md w-full md:col-start-1 md:row-span-4">
       <CarouselContent className="w-full">

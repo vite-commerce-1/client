@@ -1,8 +1,13 @@
-import Container from "@/components/atoms/container";
-import Logo from "@/components/atoms/logo";
+import React from "react";
 
-import ProfileDropdown from "@/components/moleculs/profile-dropdown";
-import SearchInput from "@/components/moleculs/search-input";
+const Container = React.lazy(() => import("@/components/atoms/container"));
+const Logo = React.lazy(() => import("@/components/atoms/logo"));
+const ProfileDropdown = React.lazy(
+  () => import("@/components/moleculs/profile-dropdown")
+);
+const SearchInput = React.lazy(
+  () => import("@/components/moleculs/search-input")
+);
 
 const Navbar = () => {
   return (

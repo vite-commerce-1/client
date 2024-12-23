@@ -1,4 +1,4 @@
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { Badge } from "../atoms/badge";
 import {
   Card,
@@ -12,9 +12,17 @@ import { IAddress } from "@/services/interfaces/address-interface";
 import { useDeleteAddress } from "@/services/api/address/use-remove-address";
 import { useSetDefaultAddress } from "@/services/api/address/use-set-default-address";
 
+import L from "leaflet";
+
 interface IProps {
   address: IAddress;
 }
+
+const markerIcon = new L.Icon({
+  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
 
 const AddressCard = ({ address }: IProps) => {
   const { mutate: deleteAddress } = useDeleteAddress();
@@ -61,25 +69,14 @@ const AddressCard = ({ address }: IProps) => {
             {address?.detail}
           </span>
         </div>
-        <div className="w-full flex items-center justify-between">
-          <MapContainer
-            center={[-6.1785, 106.789]}
-            zoom={13}
-            style={{ height: "400px", width: "100%" }}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker
-              position={[address?.coordinates[0], address?.coordinates[1]]}
-            >
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker>
-          </MapContainer>
-        </div>
+        <MapContainer
+          center={[-6.1785, 106.789]}
+          zoom={13}
+          style={{ height: "400px", width: "100%" }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <Marker position={[-6.1785, 106.789]} icon={markerIcon} />
+        </MapContainer>
       </CardContent>
       <CardFooter className="space-x-4">
         <Button

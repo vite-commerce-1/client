@@ -6,9 +6,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/atoms/card";
-import Container from "@/components/atoms/container";
-import LoginForm from "@/components/organisme/auth/login-form";
+import React from "react";
 import { Link } from "react-router-dom";
+
+const Container = React.lazy(() => import("@/components/atoms/container"));
+const LoginForm = React.lazy(
+  () => import("@/components/organisme/auth/login-form")
+);
 
 const LoginPage = () => {
   return (

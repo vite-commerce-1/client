@@ -1,5 +1,4 @@
 import { Button } from "@/components/atoms/button";
-import Container from "@/components/atoms/container";
 import { Input } from "@/components/atoms/input";
 import Logo from "@/components/atoms/logo";
 import { FacebookIcon, InstagramIcon, TwitterIcon } from "lucide-react";
@@ -13,6 +12,9 @@ import {
   FormField,
   FormItem,
 } from "@/components/atoms/form";
+import React from "react";
+
+const Container = React.lazy(() => import("@/components/atoms/container"));
 
 const subscribeSchema = z.object({
   email: z.string().email("Please enter a valid email address"),

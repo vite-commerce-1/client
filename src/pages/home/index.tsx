@@ -1,6 +1,12 @@
-import Hero from "@/components/organisme/home/hero";
-import CategorySlider from "./category-slider";
-import ProductSlider from "./product-slider";
+import React from "react";
+
+const Hero = React.lazy(() => import("@/components/organisme/home/hero"));
+const CategorySlider = React.lazy(
+  () => import("@/components/organisme/home/category-slider")
+);
+const ProductSlider = React.lazy(
+  () => import("@/components/organisme/home/product-slider")
+);
 
 const HomePage = () => {
   return (

@@ -1,7 +1,13 @@
 import { Skeleton } from "@/components/atoms/skeleton";
-import ProductCard from "@/components/moleculs/product-card";
-import ProductNotFound from "@/components/moleculs/product-not-found";
 import { IProduct } from "@/services/interfaces/product-interface";
+import React from "react";
+
+const ProductNotFound = React.lazy(
+  () => import("@/components/moleculs/product-not-found")
+);
+const ProductCard = React.lazy(
+  () => import("@/components/moleculs/product-card")
+);
 
 interface IProps {
   loading: boolean;
