@@ -5,10 +5,18 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/atoms/carousel";
-import Container from "@/components/atoms/container";
-import CategoryCard from "@/components/moleculs/category-card";
-import HeaderSection from "@/components/moleculs/header-section";
+
 import { useCategories } from "@/services/api/category/use-categories";
+
+import React from "react";
+
+const Container = React.lazy(() => import("@/components/atoms/container"));
+const CategoryCard = React.lazy(
+  () => import("@/components/moleculs/category-card")
+);
+const HeaderSection = React.lazy(
+  () => import("@/components/moleculs/header-section")
+);
 
 const CategorySlider = () => {
   const { data: categories } = useCategories();

@@ -1,9 +1,17 @@
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "@/services/api/product/use-products";
-import Container from "@/components/atoms/container";
-import SelectCategory from "@/components/organisme/products/select-category";
-import ProductList from "@/components/organisme/products/product-list";
-import ProductPagination from "@/components/organisme/products/product-pagination";
+import React from "react";
+
+const Container = React.lazy(() => import("@/components/atoms/container"));
+const SelectCategory = React.lazy(
+  () => import("@/components/organisme/products/select-category")
+);
+const ProductList = React.lazy(
+  () => import("@/components/organisme/products/product-list")
+);
+const ProductPagination = React.lazy(
+  () => import("@/components/organisme/products/product-pagination")
+);
 
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();

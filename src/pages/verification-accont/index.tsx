@@ -5,8 +5,12 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/atoms/card";
-import Container from "@/components/atoms/container";
-import VerificationForm from "@/components/organisme/auth/verification-form";
+import React from "react";
+
+const Container = React.lazy(() => import("@/components/atoms/container"));
+const VerificationForm = React.lazy(
+  () => import("@/components/organisme/auth/verification-form")
+);
 
 const VerificationAccountPage = () => {
   return (

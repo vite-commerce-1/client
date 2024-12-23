@@ -26,7 +26,7 @@ const ProfileDropdown = ({ className }: { className?: string }) => {
 
   return (
     <>
-      {user !== null ? (
+      {user !== null || user !== undefined ? (
         <DropdownMenu>
           <DropdownMenuTrigger className={cn(className, "")}>
             <Avatar>

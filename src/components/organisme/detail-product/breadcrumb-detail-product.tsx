@@ -6,8 +6,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/atoms/breadcrumb";
+import { Skeleton } from "@/components/atoms/skeleton";
 
 const BreadcrumbDetailProduct = ({ name }: { name?: string }) => {
+  if (!name) {
+    return <Skeleton className="h-8" />;
+  }
+
   return (
     <Breadcrumb>
       <BreadcrumbList className="flex-nowrap">

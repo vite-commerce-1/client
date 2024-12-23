@@ -6,9 +6,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/atoms/card";
-import Container from "@/components/atoms/container";
-import RegisterForm from "@/components/organisme/auth/register-form";
+import React from "react";
 import { Link } from "react-router-dom";
+
+const Container = React.lazy(() => import("@/components/atoms/container"));
+const RegisterForm = React.lazy(
+  () => import("@/components/organisme/auth/register-form")
+);
 
 const RegisterPage = () => {
   return (
