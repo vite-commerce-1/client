@@ -1,5 +1,5 @@
 import ProductSlider from "@/components/organisme/products/product-slider";
-import CategorySlider from "./category-slider";
+import CategorySlider from "../../organisme/category/category-slider";
 import Hero from "./hero";
 
 const HomeView = () => {

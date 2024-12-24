@@ -11,6 +11,7 @@ import { useProducts } from "@/features/product/use-products";
 import { Link } from "react-router-dom";
 import { conditionalRender } from "@/lib/render-helper";
 import { Skeleton } from "@/components/atoms/skeleton";
+import TextHeaderSection from "@/components/moleculs/text-header-section";
 
 const Container = React.lazy(() => import("@/components/atoms/container"));
 const ProductCard = React.lazy(
@@ -25,7 +26,7 @@ const ProductSlider = () => {
   return (
     <Container className="space-y-4 py-4">
       <header className="flex items-center justify-between">
-        <h1 className="section-title">Our stuff</h1>
+        <TextHeaderSection title="Our Stuff" />
         <Link to={"/products"} className="text-sm font-medium hover:underline">
           View all products
         </Link>

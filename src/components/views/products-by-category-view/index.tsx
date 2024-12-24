@@ -1,8 +1,9 @@
 import Container from "@/components/atoms/container";
 import { useProducts } from "@/features/product/use-products";
 import { useParams, useSearchParams } from "react-router-dom";
-import ProductList from "../products-view/product-list";
+import ProductList from "../../organisme/products/product-list";
 import ProductPagination from "@/components/organisme/products/product-pagination";
+import TextHeaderSection from "@/components/moleculs/text-header-section";
 
 const ProductByCategoryView = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,7 +26,7 @@ const ProductByCategoryView = () => {
     <div>
       <Container className="pt-24 space-y-4">
         <header className="flex items-center justify-between">
-          <h1 className="section-title">Products</h1>
+          <TextHeaderSection title={category!} />
         </header>
 
         <ProductList products={products!} />

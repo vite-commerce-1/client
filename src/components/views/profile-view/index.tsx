@@ -15,6 +15,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/atoms/dialog";
+import TextHeaderSection from "@/components/moleculs/text-header-section";
 import ProfileAddressList from "@/components/organisme/address/profile-address-list";
 import ProfileImage from "@/components/organisme/profile/profile-image";
 import ProfileInformationList from "@/components/organisme/profile/profile-information-list";
@@ -28,12 +29,10 @@ const ProfileView = () => {
   return (
     <div>
       <Container className="pt-20">
-        <h1 className="text-3xl font-bebas tracking-wider font-bold mb-6">
-          User Profile
-        </h1>
+        <TextHeaderSection title="Profile" />
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">Profile Information</CardTitle>
+            <CardTitle className="text-2xl tracking-tight">Profile Information</CardTitle>
           </CardHeader>
           <CardContent className="grid grid-cols-1 grid-flow-row">
             {/* Profile image */}

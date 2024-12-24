@@ -14,7 +14,7 @@ import React from "react";
 const Container = React.lazy(() => import("@/components/atoms/container"));
 
 const HeaderSection = React.lazy(
-  () => import("@/components/moleculs/header-section")
+  () => import("@/components/moleculs/text-header-section")
 );
 
 const CategorySlider = () => {

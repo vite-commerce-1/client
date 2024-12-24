@@ -1,9 +1,10 @@
 import Container from "@/components/atoms/container";
-import ProductList from "@/components/views/products-view/product-list";
+import ProductList from "@/components/organisme/products/product-list";
 import ProductPagination from "@/components/organisme/products/product-pagination";
-import SelectCategory from "@/components/views/products-view/products-select-category";
+import SelectCategory from "@/components/organisme/products/products-select-category";
 import { useProducts } from "@/features/product/use-products";
 import { useSearchParams } from "react-router-dom";
+import TextHeaderSection from "@/components/moleculs/text-header-section";
 
 const ProductsView = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -41,7 +42,7 @@ const ProductsView = () => {
     <div>
       <Container className="pt-24 space-y-4">
         <header className="flex items-center justify-between">
-          <h1 className="section-title">Products</h1>
+          <TextHeaderSection title="Products" />
 
           <SelectCategory
             selectedCategory={selectedCategory}

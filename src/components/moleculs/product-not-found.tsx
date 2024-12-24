@@ -2,7 +2,7 @@ import React from "react";
 import Container from "../atoms/container";
 import SearchInput from "@/components/organisme/navbar/search-input";
 import { useProducts } from "@/features/product/use-products";
-import HeaderSection from "./header-section";
+import HeaderSection from "./text-header-section";
 import {
   Carousel,
   CarouselContent,
