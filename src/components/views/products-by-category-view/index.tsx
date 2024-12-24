@@ -1,40 +1,24 @@
 import Container from "@/components/atoms/container";
-import ProductList from "@/components/views/products-view/product-list";
-import ProductPagination from "@/components/organisme/products/product-pagination";
-import SelectCategory from "@/components/views/products-view/products-select-category";
 import { useProducts } from "@/features/product/use-products";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
+import ProductList from "../products-view/product-list";
+import ProductPagination from "@/components/organisme/products/product-pagination";
 
-const ProductsView = () => {
+const ProductByCategoryView = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const selectedCategory = searchParams.get("category") || "";
-  const name = searchParams.get("name") || "";
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
+  const { category } = useParams();
 
   const { data: productsData } = useProducts({
-    name: name,
-    category: selectedCategory,
-    page: currentPage,
+    category: category!,
   });
+
   const products = productsData?.products;
   const totalPages = productsData?.pagination.totalPages || 1;
-
-  const handleCategoryChange = (category: string) => {
-    if (category === "others") {
-      category = "";
-    }
-    if (category) {
-      setSearchParams({ category });
-    } else {
-      setSearchParams({});
-    }
-  };
 
   const handlePageChange = (page: number) => {
     setSearchParams({
       page: page.toString(),
-      category: selectedCategory,
-      name: name,
     });
   };
   return (
@@ -42,11 +26,6 @@ const ProductsView = () => {
       <Container className="pt-24 space-y-4">
         <header className="flex items-center justify-between">
           <h1 className="section-title">Products</h1>
-
-          <SelectCategory
-            selectedCategory={selectedCategory}
-            handleCategoryChange={handleCategoryChange}
-          />
         </header>
 
         <ProductList products={products!} />
@@ -61,4 +40,4 @@ const ProductsView = () => {
   );
 };
 
-export default ProductsView;
+export default ProductByCategoryView;

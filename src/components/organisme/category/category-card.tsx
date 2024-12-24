@@ -7,10 +7,9 @@ interface IProps {
 }
 
 const CategoryCard = ({ category }: IProps) => {
-  const { image, name, _id } = category; // Destructuring untuk memudahkan akses
-
+  const { image, name } = category;
   return (
-    <Link to={`/category/${_id}`}>
+    <Link to={`products/category/${name}`}>
       {" "}
       {/* Mengubah tautan menjadi dinamis */}
       <Card className="p-3 w-full h-full flex flex-col items-center justify-center gap-3 dark:bg-primary">

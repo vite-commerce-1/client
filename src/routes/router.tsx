@@ -11,6 +11,10 @@ const NotFoundPage = lazy(() => import("@/pages/error/page-not-found"));
 const VerificationAccountPage = lazy(
   () => import("@/pages/verification-accont")
 );
+const ProductByCategoryPage = lazy(
+  () => import("@/pages/products-by-category")
+);
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -24,6 +28,10 @@ const routes = createRoutesFromElements(
     <Route element={<MainLayout />}>
       <Route path="/" element={<HomePage />} />
       <Route path="/products/:id" element={<DetailProductPage />} />
+      <Route
+        path="/products/category/:category"
+        element={<ProductByCategoryPage />}
+      />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/add-address" element={<AddAddressPage />} />
