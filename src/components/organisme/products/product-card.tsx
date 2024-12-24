@@ -2,11 +2,12 @@ import { IProduct } from "@/services/interfaces/product-interface";
 import { Card, CardContent, CardFooter, CardHeader } from "../../atoms/card";
 import { Carousel, CarouselContent, CarouselItem } from "../../atoms/carousel";
 import { Badge } from "../../atoms/badge";
-import { Button, buttonVariants } from "../../atoms/button";
-import { EyeIcon, ShoppingBagIcon } from "lucide-react";
+import { buttonVariants } from "../../atoms/button";
+import { EyeIcon } from "lucide-react";
 import { formatCurrency } from "@/lib/format-currency";
 import ButtonTooltip from "../../atoms/button-tooltip";
 import { Link } from "react-router-dom";
+import CreateCartPopup from "@/features/cart/components/create-cart-popup";
 
 interface IProps {
   product: IProduct;
@@ -19,9 +20,7 @@ const ProductCard = ({ product, hideFooter = false }: IProps) => {
       <Link className="flex flex-col" to={`/products/${product?._id}`}>
         <CardHeader>
           <Carousel>
-            <Badge
-              className="absolute top-1 right-1 z-10 capitalize"
-            >
+            <Badge className="absolute top-1 right-1 z-10 capitalize">
               {product?.category?.name}
             </Badge>
             <CarouselContent>
@@ -42,15 +41,11 @@ const ProductCard = ({ product, hideFooter = false }: IProps) => {
       </Link>
       {!hideFooter && (
         <CardFooter className="flex flex-wrap gap-4">
-          <ButtonTooltip content="Add to cart">
-            <Button >
-              <ShoppingBagIcon />
-            </Button>
-          </ButtonTooltip>
+          <CreateCartPopup product={product} stock={product?.stock || 0} />
           <ButtonTooltip content="View detail">
             <Link
               to={`/products/${product?._id}`}
-              className={buttonVariants({  })}
+              className={buttonVariants({})}
             >
               <EyeIcon />
             </Link>

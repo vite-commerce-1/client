@@ -10,7 +10,6 @@ import Container from "@/components/atoms/container";
 import { Separator } from "@/components/atoms/separator";
 import ProductDescription from "@/components/views/detail-product-view/product-description";
 import ProductName from "@/components/views/detail-product-view/product-name";
-import ProductOptionVariant from "@/components/views/detail-product-view/product-option-variant";
 import ProductPrice from "@/components/views/detail-product-view/product-price";
 import DrawerDetailProduct from "@/components/organisme/detail-product/drawer-detail-product";
 import ImageSliderProduct from "@/components/organisme/detail-product/image-slider-product";
@@ -71,9 +70,13 @@ const DetailProductView = () => {
           size={"sm"}
         />
 
+        <h1 className="font-semibold mt-4 tracking-tight md:col-start-2 md:row-start-4">
+          <span> Stock :</span> <span className="text-muted-foreground">{product?.stock}</span>
+        </h1>
+
         <Separator className="my-4 md:hidden" />
 
-        <div className="mb-4 md:mt-4 md:col-start-2 md:row-start-4">
+        <div className="mb-4 md:mt-4 md:col-start-2 md:row-start-5">
           <ProductDescription size={"xs"}>
             {product?.description}
           </ProductDescription>
@@ -83,11 +86,6 @@ const DetailProductView = () => {
             </p>
           </DrawerDetailProduct>
         </div>
-
-        <ProductOptionVariant
-          className="md:col-start-2 md:row-start-5"
-          type={product?.type}
-        />
       </Container>
       <Container>
         <RelatedProductSlider products={filteredProduct!} />
