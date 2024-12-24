@@ -1,10 +1,10 @@
 import { z } from "zod";
-import { axiosWithConfig } from "../axios-with-config";
 import { useMutation } from "@tanstack/react-query";
 import { IAddressResponse } from "@/services/interfaces/address-interface";
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
+import { axiosWithConfig } from "@/services/api/axios-with-config";
 
 export const createAddressSchema = z.object({
   detail: z.string().nonempty("Detail address is required"), // Detail alamat harus diisi

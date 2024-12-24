@@ -1,3 +1,9 @@
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/atoms/tooltip";
 import { cn } from "@/lib/utils";
 
 interface IProps {
@@ -7,12 +13,26 @@ interface IProps {
 const ProfileImage = ({ image, className }: IProps) => {
   if (!image) {
     return (
-      <figure className={cn("", className)}>
-        <img
-          src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-          alt=""
-        />
-      </figure>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild className="w-fit">
+            <figure
+              className={cn(
+                "max-w-[200px] rounded-full overflow-hidden aspect-square",
+                className
+              )}
+            >
+              <img src="https://placehold.co/400" alt="" />
+            </figure>
+          </TooltipTrigger>
+          <TooltipContent className="bg-destructive">
+            <p className="max-w-[200px] text-wrap">
+              You don&apos;t have an profile image, please click button edit
+              profile to upload your profile image
+            </p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     );
   }
 

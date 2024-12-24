@@ -27,6 +27,8 @@ const DetailProductView = () => {
   const { data: productsData } = useProducts();
   const products = productsData?.products;
 
+  const filteredProduct = products?.filter((product) => product._id !== id);
+
   return (
     <div>
       <Container className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_auto_auto_auto_auto] pt-20">
@@ -88,7 +90,7 @@ const DetailProductView = () => {
         />
       </Container>
       <Container>
-        <RelatedProductSlider products={products!} />
+        <RelatedProductSlider products={filteredProduct!} />
       </Container>
     </div>
   );

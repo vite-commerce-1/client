@@ -8,10 +8,6 @@ import {
   FormMessage,
 } from "@/components/atoms/form";
 import { Input } from "@/components/atoms/input";
-import {
-  createAddressSchema,
-  useAddAddress,
-} from "@/services/api/address/use-add-address";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +16,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { ScrollArea } from "@/components/atoms/scroll-area";
+import { createAddressSchema, useAddAddress } from "../utils/use-add-address";
 
 const markerIcon = new L.Icon({
   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
