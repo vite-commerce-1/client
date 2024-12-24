@@ -1,3 +1,4 @@
+import { Button } from "@/components/atoms/button";
 import {
   Pagination,
   PaginationContent,
@@ -23,13 +24,15 @@ const ProductPagination = ({
     <Pagination>
       <PaginationContent>
         {/* Previous Page Button */}
-        <PaginationItem>
-          <PaginationPrevious
-            className="cursor-pointer"
-            onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-            isActive={currentPage !== 1}
-          />
-        </PaginationItem>
+        <Button variant={"ghost"} className="p-0" disabled={currentPage === 1}>
+          <PaginationItem>
+            <PaginationPrevious
+              className="cursor-pointer"
+              onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+              isActive={currentPage !== 1}
+            />
+          </PaginationItem>
+        </Button>
 
         {/* Page Number Links */}
         {Array.from({ length: totalPages }).map((_, index) => {
@@ -55,15 +58,17 @@ const ProductPagination = ({
         )}
 
         {/* Next Page Button */}
-        <PaginationItem>
-          <PaginationNext
-            className="cursor-pointer"
-            onClick={() =>
-              handlePageChange(Math.min(totalPages, currentPage + 1))
-            }
-            isActive={currentPage !== totalPages}
-          />
-        </PaginationItem>
+        <Button variant={"ghost"} className="p-0" disabled={currentPage === totalPages}>
+          <PaginationItem>
+            <PaginationNext
+              className="cursor-pointer"
+              onClick={() =>
+                handlePageChange(Math.min(totalPages, currentPage + 1))
+              }
+              isActive={currentPage !== totalPages}
+            />
+          </PaginationItem>
+        </Button>
       </PaginationContent>
     </Pagination>
   );

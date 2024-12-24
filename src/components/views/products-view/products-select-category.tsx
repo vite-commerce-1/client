@@ -23,7 +23,7 @@ const ProductsSelectCategory = ({
       onValueChange={(value) => handleCategoryChange(value)}
     >
       <SelectTrigger className="capitalize max-w-[200px] justify-self-end">
-        <SelectValue placeholder="Select category" />
+        <SelectValue placeholder={selectedCategory ? selectedCategory : "Select Category"} />
       </SelectTrigger>
       <SelectContent>
         {categories?.map((category) => (
