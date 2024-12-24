@@ -18,6 +18,7 @@ import {
 import ProfileAddressList from "@/components/organisme/address/profile-address-list";
 import ProfileImage from "@/components/organisme/profile/profile-image";
 import ProfileInformationList from "@/components/organisme/profile/profile-information-list";
+import UpdatePasswordForm from "@/features/auth/components/update-password-form";
 import UpdateProfileForm from "@/features/auth/components/update-profile-form";
 import { useCurrentUser } from "@/features/auth/utils/use-current-user";
 
@@ -27,7 +28,9 @@ const ProfileView = () => {
   return (
     <div>
       <Container className="pt-20">
-        <h1 className="text-3xl font-bebas tracking-wider font-bold mb-6">User Profile</h1>
+        <h1 className="text-3xl font-bebas tracking-wider font-bold mb-6">
+          User Profile
+        </h1>
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl">Profile Information</CardTitle>
@@ -78,6 +81,7 @@ const ProfileView = () => {
                     <DialogDescription>
                       Please field old password and your new password
                     </DialogDescription>
+                    <UpdatePasswordForm />
                   </DialogHeader>
                 </DialogContent>
               </Dialog>
