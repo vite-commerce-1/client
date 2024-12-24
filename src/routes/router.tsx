@@ -22,6 +22,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Loader from "@/components/moleculs/loader";
+import CartsPage from "@/pages/carts-page";
 
 const routes = createRoutesFromElements(
   <Route>
@@ -34,6 +35,7 @@ const routes = createRoutesFromElements(
       />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/profile/cart" element={<CartsPage />} />
       <Route path="/add-address" element={<AddAddressPage />} />
     </Route>
     <Route path="/login" element={<LoginPage />} />

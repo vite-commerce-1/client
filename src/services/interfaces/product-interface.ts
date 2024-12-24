@@ -1,9 +1,3 @@
-export interface IProductType {
-  key: string;
-  values: string[];
-  _id: string;
-}
-
 interface ICategory {
   _id: string;
   name: string;
@@ -15,7 +9,7 @@ export interface IProduct {
   price: number;
   image: string[];
   description: string;
-  type: IProductType[];
+  stock: number;
   category: ICategory;
   __v: number;
 }
