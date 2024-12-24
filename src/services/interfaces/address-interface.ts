@@ -8,7 +8,10 @@ export interface IAddress {
   country: string;
   postalCode: string;
   defaultAddress: boolean;
-  coordinates: number[];
+  coordinates: {
+    latitude: number;
+    longitude: number;
+  };
   _id: string;
   __v: number;
 }

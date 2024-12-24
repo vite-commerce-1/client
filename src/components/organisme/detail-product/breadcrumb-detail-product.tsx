@@ -8,7 +8,11 @@ import {
 } from "@/components/atoms/breadcrumb";
 import { Skeleton } from "@/components/atoms/skeleton";
 
-const BreadcrumbDetailProduct = ({ name }: { name?: string }) => {
+interface BreadcrumbDetailProductProps {
+  name?: string;
+}
+
+const BreadcrumbDetailProduct = ({ name }: BreadcrumbDetailProductProps) => {
   if (!name) {
     return <Skeleton className="h-8" />;
   }

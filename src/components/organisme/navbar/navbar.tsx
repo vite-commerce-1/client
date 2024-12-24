@@ -6,7 +6,7 @@ const ProfileDropdown = React.lazy(
   () => import("@/components/moleculs/profile-dropdown")
 );
 const SearchInput = React.lazy(
-  () => import("@/components/moleculs/search-input")
+  () => import("@/components/organisme/navbar/search-input")
 );
 
 const Navbar = () => {

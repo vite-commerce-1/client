@@ -10,7 +10,7 @@ import { IProduct } from "@/services/interfaces/product-interface";
 import React from "react";
 
 const ProductCard = React.lazy(
-  () => import("@/components/moleculs/product-card")
+  () => import("@/components/organisme/products/product-card")
 );
 
 interface IProps {

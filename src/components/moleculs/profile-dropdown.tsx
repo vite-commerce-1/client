@@ -16,17 +16,18 @@ import {
   User2Icon,
 } from "lucide-react";
 import { ModeToggle } from "../atoms/mode-toggle";
-import { buttonVariants } from "../atoms/button";
 import { Link } from "react-router-dom";
-import { useLogout } from "@/services/api/auth/use-logout";
+import { useLogout } from "@/features/auth/utils/use-logout";
+import { useCurrentUser } from "@/features/auth/utils/use-current-user";
+import { buttonVariants } from "../atoms/button";
 
 const ProfileDropdown = ({ className }: { className?: string }) => {
   const { mutate: logout } = useLogout();
-  const user = localStorage.getItem("user");
-
+  const { error } = useCurrentUser();
+  console.log(error);
   return (
     <>
-      {user !== null || user !== undefined ? (
+      {error === null ? (
         <DropdownMenu>
           <DropdownMenuTrigger className={cn(className, "")}>
             <Avatar>
@@ -66,13 +67,7 @@ const ProfileDropdown = ({ className }: { className?: string }) => {
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <Link
-          to={"/login"}
-          className={cn(
-            buttonVariants({ variant: "default" }),
-            "justify-self-end w-fit"
-          )}
-        >
+        <Link to={"/login"} className={cn(buttonVariants({}),"w-fit justify-self-end")}>
           Login
         </Link>
       )}

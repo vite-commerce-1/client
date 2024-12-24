@@ -4,29 +4,38 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/atoms/carousel";
-import { Skeleton } from "@/components/atoms/skeleton";
+import { cn } from "@/lib/utils";
 import { IProduct } from "@/services/interfaces/product-interface";
 
 interface IProps {
   product: IProduct;
+  className?: string;
 }
 
-const ImageSliderProduct = ({ product }: IProps) => {
-  if (!product) {
-    <Skeleton className="max-w-md w-full md:col-start-1 md:row-span-4" />;
-  }
+const ImageSliderProduct = ({ product, className }: IProps) => {
+  const { image = [], category } = product || {};
 
   return (
-    <Carousel className="max-w-md w-full md:col-start-1 md:row-span-4">
+    <Carousel className={cn("max-w-md w-full", className)}>
       <CarouselContent className="w-full">
-        {product?.image?.map((image: string, index: number) => (
-          <CarouselItem className="w-full" key={index}>
-            <Badge className="absolute top-1 right-1 z-10 capitalize">
-              {product?.category?.name}
-            </Badge>
-            <img src={image} alt="" key={index} className="w-full rounded-md" />
-          </CarouselItem>
-        ))}
+        {image.length > 0 ? (
+          image.map((imgSrc: string, index: number) => (
+            <CarouselItem className="w-full" key={index}>
+              {category && (
+                <Badge className="absolute top-1 right-1 z-10 capitalize">
+                  {category.name}
+                </Badge>
+              )}
+              <img
+                src={imgSrc}
+                alt={category ? `${category.name} image` : "Product image"} // Menambahkan alt text yang deskriptif
+                className="w-full rounded-md"
+              />
+            </CarouselItem>
+          ))
+        ) : (
+          <div className="w-full text-center">No images available</div> // Menangani kasus tidak ada gambar
+        )}
       </CarouselContent>
     </Carousel>
   );
