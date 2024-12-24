@@ -2,7 +2,7 @@ import { ICurrentUser } from "@/services/interfaces/user-interface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AuthState {
-  user: ICurrentUser | null; // Replace 'any' with your user type
+  user: ICurrentUser | null;
 }
 
 const initialState: AuthState = {
@@ -14,7 +14,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login(state, action: PayloadAction<ICurrentUser>) {
-      // Replace 'any' with your user type
       state.user = action.payload;
       localStorage.setItem("user", JSON.stringify(action.payload));
     },

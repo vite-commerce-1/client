@@ -6,6 +6,9 @@ export default {
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
+      screens: {
+        xs: "450px",
+      },
       fontFamily: {
         bebas: ["Bebas Neue", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],

@@ -1,8 +1,10 @@
+import { memo } from "react";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
+  SelectValue,
 } from "@/components/atoms/select";
 
 interface IProps {
@@ -13,16 +15,24 @@ interface IProps {
   };
 }
 
-const SelectVariantProduct = ({ type }: IProps) => {
+const SelectVariantProduct = memo(({ type }: IProps) => {
   return (
-    <Select key={type._id}>
-      <SelectTrigger className="capitalize">{type.key}</SelectTrigger>
-      <SelectContent>
+    <Select
+      key={type._id}
+      aria-labelledby={`select-${type._id}`}
+      aria-label={type.key || "Select an option"}
+    >
+      <SelectTrigger className="capitalize">
+        <SelectValue placeholder={type.key} />
+      </SelectTrigger>
+      <SelectContent role="listbox">
         {type?.values.map((value: string | number) => (
           <SelectItem
             className="capitalize"
             value={value as string}
             key={value}
+            role="option"
+            aria-selected={false}
           >
             {value}
           </SelectItem>
@@ -30,6 +40,6 @@ const SelectVariantProduct = ({ type }: IProps) => {
       </SelectContent>
     </Select>
   );
-};
+});
 
 export default SelectVariantProduct;
