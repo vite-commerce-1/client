@@ -7,15 +7,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/atoms/carousel";
-import { useProducts } from "@/features/product/use-products";
 import { Link } from "react-router-dom";
 import { conditionalRender } from "@/lib/render-helper";
 import { Skeleton } from "@/components/atoms/skeleton";
-import TextHeaderSection from "@/components/moleculs/text-header-section";
+import TextHeaderSection from "@/components/shared/text-header-section";
+import { useProducts } from "@/features/product/utils/use-products";
 
 const Container = React.lazy(() => import("@/components/atoms/container"));
 const ProductCard = React.lazy(
-  () => import("@/components/organisme/products/product-card")
+  () => import("@/components/organisme/products/card-product")
 );
 
 const ProductSlider = () => {

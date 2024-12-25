@@ -2,7 +2,6 @@ import { toast } from "@/hooks/use-toast";
 import { axiosWithConfig } from "@/services/api/axios-with-config";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 export const createCartSchema = z.object({
@@ -16,7 +15,6 @@ const createCart = async (data: z.infer<typeof createCartSchema>) => {
 };
 
 export const useCreateCart = () => {
-  const navigate = useNavigate();
   return useMutation({
     mutationFn: (data: z.infer<typeof createCartSchema>) => createCart(data),
     mutationKey: ["create-cart"],
@@ -24,7 +22,6 @@ export const useCreateCart = () => {
       toast({
         description: "Product added to cart",
       });
-      navigate(0);
     },
     onError: (error) => {
       if (error instanceof AxiosError && error.response?.status === 401) {

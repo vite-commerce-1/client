@@ -15,12 +15,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/atoms/dialog";
-import TextHeaderSection from "@/components/moleculs/text-header-section";
-import ProfileAddressList from "@/components/organisme/address/profile-address-list";
-import ProfileImage from "@/components/organisme/profile/profile-image";
-import ProfileInformationList from "@/components/organisme/profile/profile-information-list";
-import UpdatePasswordForm from "@/features/auth/components/update-password-form";
-import UpdateProfileForm from "@/features/auth/components/update-profile-form";
+import TextHeaderSection from "@/components/shared/text-header-section";
+import ProfileAddressList from "@/components/organisme/address/card-default-address";
+import ProfileImage from "@/components/organisme/profile/image-profile";
+import ProfileInformationList from "@/components/organisme/profile/list-information-profile";
+import UpdatePasswordForm from "@/features/auth/components/form-update-password";
+import UpdateProfileForm from "@/features/auth/components/form-update-profile";
 import { useCurrentUser } from "@/features/auth/utils/use-current-user";
 
 const ProfileView = () => {
@@ -32,7 +32,9 @@ const ProfileView = () => {
         <TextHeaderSection title="Profile" />
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl tracking-tight">Profile Information</CardTitle>
+            <CardTitle className="text-2xl tracking-tight">
+              Profile Information
+            </CardTitle>
           </CardHeader>
           <CardContent className="grid grid-cols-1 grid-flow-row">
             {/* Profile image */}
@@ -86,6 +88,7 @@ const ProfileView = () => {
               </Dialog>
             </div>
           </CardContent>
+          {/* Profile address list */}
           <CardFooter>
             <ProfileAddressList />
           </CardFooter>

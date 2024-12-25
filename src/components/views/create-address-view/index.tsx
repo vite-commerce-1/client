@@ -1,5 +1,5 @@
 import Container from "@/components/atoms/container";
-import CreateAddressForm from "@/features/address/components/create-address-form";
+import CreateAddressForm from "@/features/address/components/form-create-address";
 
 const CreateAddressView = () => {
   return (

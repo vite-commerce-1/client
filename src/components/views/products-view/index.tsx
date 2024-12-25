@@ -1,10 +1,16 @@
 import Container from "@/components/atoms/container";
-import ProductList from "@/components/organisme/products/product-list";
-import ProductPagination from "@/components/organisme/products/product-pagination";
-import SelectCategory from "@/components/organisme/products/products-select-category";
-import { useProducts } from "@/features/product/use-products";
+import ProductList from "@/components/organisme/products/list-product";
+import ProductPagination from "@/features/product/components/pagination-product";
 import { useSearchParams } from "react-router-dom";
-import TextHeaderSection from "@/components/moleculs/text-header-section";
+import TextHeaderSection from "@/components/shared/text-header-section";
+import { Helmet } from "react-helmet-async";
+
+import React, { Suspense } from "react";
+import { Skeleton } from "@/components/atoms/skeleton";
+import { useProducts } from "@/features/product/utils/use-products";
+const SelectCategory = React.lazy(
+  () => import("@/features/product/components/select-category-products")
+);
 
 const ProductsView = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,14 +27,13 @@ const ProductsView = () => {
   const totalPages = productsData?.pagination.totalPages || 1;
 
   const handleCategoryChange = (category: string) => {
-    if (category === "others") {
-      category = "";
-    }
-    if (category) {
-      setSearchParams({ category });
-    } else {
-      setSearchParams({});
-    }
+    setSearchParams((prev) => {
+      const newParams = {
+        ...prev,
+        category: category === "others" ? "" : category,
+      };
+      return newParams;
+    });
   };
 
   const handlePageChange = (page: number) => {
@@ -39,18 +44,28 @@ const ProductsView = () => {
     });
   };
   return (
-    <div>
+    <>
+      <Helmet>
+        <title>Products - Your E-commerce Site</title>
+        <meta
+          name="description"
+          content="Browse our wide selection of products."
+        />
+        <meta name="keywords" content="ecommerce, products, shop" />
+      </Helmet>
       <Container className="pt-24 space-y-4">
         <header className="flex items-center justify-between">
           <TextHeaderSection title="Products" />
-
-          <SelectCategory
-            selectedCategory={selectedCategory}
-            handleCategoryChange={handleCategoryChange}
-          />
+          <Suspense fallback={<Skeleton className="h-8" />}>
+            <SelectCategory
+              selectedCategory={selectedCategory}
+              handleCategoryChange={handleCategoryChange}
+            />
+          </Suspense>
+          ;
         </header>
 
-        <ProductList products={products!} />
+        <ProductList products={products || Array(8).fill(null)} />
 
         <ProductPagination
           handlePageChange={handlePageChange}
@@ -58,7 +73,7 @@ const ProductsView = () => {
           totalPages={totalPages}
         />
       </Container>
-    </div>
+    </>
   );
 };
 

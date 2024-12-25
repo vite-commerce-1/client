@@ -6,7 +6,7 @@ import {
   CardHeader,
 } from "@/components/atoms/card";
 import Container from "@/components/atoms/container";
-import VerificationForm from "@/features/auth/components/verification-form";
+import VerificationForm from "@/features/auth/components/form-verification";
 
 const VerificationAccountView = () => {
   return (
@@ -26,7 +26,7 @@ const VerificationAccountView = () => {
             <p className="text-center">
               If you don&apos;t receive an email, please regenerate OTP code
             </p>
-            <Button>Regenerate OTP</Button>
+            <Button>Generate OTP</Button>
           </CardFooter>
         </Card>
       </Container>

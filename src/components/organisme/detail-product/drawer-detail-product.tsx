@@ -5,7 +5,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/atoms/drawer";
-import Loader from "@/components/moleculs/loader";
+import Loader from "@/components/shared/loader";
 import { IProduct } from "@/services/interfaces/product-interface";
 
 interface IProps {

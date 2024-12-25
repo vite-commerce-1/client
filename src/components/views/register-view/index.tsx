@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const Container = React.lazy(() => import("@/components/atoms/container"));
 const RegisterForm = React.lazy(
-  () => import("@/features/auth/components/register-form")
+  () => import("@/features/auth/components/form-register")
 );
 
 const RegisterView = () => {

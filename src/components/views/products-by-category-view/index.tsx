@@ -1,9 +1,9 @@
 import Container from "@/components/atoms/container";
-import { useProducts } from "@/features/product/use-products";
 import { useParams, useSearchParams } from "react-router-dom";
-import ProductList from "../../organisme/products/product-list";
-import ProductPagination from "@/components/organisme/products/product-pagination";
-import TextHeaderSection from "@/components/moleculs/text-header-section";
+import ProductList from "../../organisme/products/list-product";
+import ProductPagination from "@/features/product/components/pagination-product";
+import TextHeaderSection from "@/components/shared/text-header-section";
+import { useProducts } from "@/features/product/utils/use-products";
 
 const ProductByCategoryView = () => {
   const [searchParams, setSearchParams] = useSearchParams();

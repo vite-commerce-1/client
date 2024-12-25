@@ -10,7 +10,6 @@ export const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(6, "Password must be at least 6 characters long"),
 });
-
 const login = async (data: z.infer<typeof loginSchema>) => {
   const response = await axiosWithConfig.post<ILoginResponse>(
     "/auth/login",
